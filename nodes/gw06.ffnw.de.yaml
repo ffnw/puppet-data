@@ -1,0 +1,90 @@
+classes:
+  - hood
+  - backbone
+  - ibgp
+  - icvpn
+  - ffrl
+
+nets_self: &nets_self
+  - 10.18.1.6/32
+#  - 10.18.8.0/21
+
+nets_self6: &nets_self6
+  - fd74:fdaa:9dc4:0106::/64
+  - 2a03:2260:1001:0106::/64
+#  - fd74:fdaa:9dc4:0800::/53
+#  - 2a03:2260:1001:0800::/53
+
+#network::inet::static:
+#  eth0:
+#    address: &public_ip 5.104.106.134
+#    netmask: 255.255.255.255
+#    broadcast: 255.255.255.255
+#    pointopoint: 5.104.106.1
+#    gateway: 5.104.106.1
+
+bird::router_id: *public_ip
+
+#hood::create:
+#  ol-nord:
+#    subnet: 10.18.8.0/21
+#    subnet6:
+#      - 2a03:2260:1001:0800::/53
+#    fastd: 4
+
+#backbone::gre:
+#  gw01:
+#    endpoint: "%{hiera('endpoint-gw01')}"
+#    transfer: 10.18.248.9/31
+#    transfer6: fd74:fdaa:9dc4:f808::2/64
+#  gw02:
+#    endpoint: "%{hiera('endpoint-gw02')}"
+#    transfer: 10.18.248.21/31
+#    transfer6: fd74:fdaa:9dc4:f814::2/64
+#  gw03:
+#    endpoint: "%{hiera('endpoint-gw03')}"
+#    transfer: 10.18.248.31/31
+#    transfer6: fd74:fdaa:9dc4:f81e::2/64
+#  gw04:
+#    endpoint: "%{hiera('endpoint-gw04')}"
+#    transfer: 10.18.248.39/31
+#    transfer6: fd74:fdaa:9dc4:f826::2/64
+#  gw05:
+#    endpoint: "%{hiera('endpoint-gw05')}"
+#    transfer: 10.18.248.45/31
+#    transfer6: fd74:fdaa:9dc4:f82c::2/64
+#  gw07:
+#    endpoint: "%{hiera('endpoint-gw07')}"
+#    transfer: 10.18.248.50/31
+#    transfer6: fd74:fdaa:9dc4:f832::1/64
+#  gw08:
+#    endpoint: "%{hiera('endpoint-gw08')}"
+#    transfer: 10.18.248.52/31
+#    transfer6: fd74:fdaa:9dc4:f834::1/64
+
+ibgp::source: 10.18.1.6
+ibgp::source6: fd74:fdaa:9dc4:0106::1
+
+icvpn::node: '06'
+#icvpn::transfer_net: 10.207.18.6/16
+#icvpn::transfer_net6: fec0::a:cf:12:6/96
+icvpn::nets_self: *nets_self
+icvpn::nets_self6: *nets_self6
+
+#ffrl::nat_ip: 185.66.195.2
+#ffrl::preferred: fra
+ffrl::public_nets_self: *nets_self
+ffrl::public_nets_self6: *nets_self6
+#ffrl::bba_dus: /31
+#ffrl::bbb_dus: /31
+#ffrl::bba_fra: /31
+#ffrl::bbb_fra: /31
+#ffrl::bba_ber: /31
+#ffrl::bbb_ber: /31
+#ffrl::bba_dus6: /64
+#ffrl::bbb_dus6: /64
+#ffrl::bba_fra6: /64
+#ffrl::bbb_fra6: /64
+#ffrl::bba_ber6: /64
+#ffrl::bbb_ber6: /64
+
