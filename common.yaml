@@ -64,24 +64,16 @@ nets6: &nets6
 
 local_as: &local_as 65513
 
-kernel_table: &kernel_table 42
-
 icvpn::community: nordwest
 icvpn::local_as: *local_as
 icvpn::nets: *nets
 icvpn::nets6: *nets6
-icvpn::kernel_table: *kernel_table
 
 ffrl::local_as: *local_as
 ffrl::public_nets: *nets
 ffrl::public_nets6: *nets6
-ffrl::kernel_table: *kernel_table
 
 ibgp::local_as: *local_as
-
-backbone::kernel_table: *kernel_table
-
-batman::kernel_table: *kernel_table
 
 #endpoint-gw01: 
 #endpoint-gw02: 
