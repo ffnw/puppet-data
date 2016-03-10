@@ -75,6 +75,9 @@ ffrl::public_nets6: *nets6
 
 ibgp::local_as: *local_as
 
+router::subnet: *nets
+router::subnet6: *nets6
+
 #endpoint-gw01: 
 #endpoint-gw02: 
 #endpoint-gw03: 
