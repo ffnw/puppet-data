@@ -87,6 +87,11 @@ router::subnet6: *nets6
 #endpoint-gw07: 
 #endpoint-gw08: 
 
+dhcp::dnsserver1: 37.120.176.207 #10.18.0.1
+dhcp::dnsserver2: 217.12.208.132 #10.18.0.2
+dhcp::dnsserver6_1: 2a03:4000:6:8025::1
+dhcp::dnsserver6_2: 2a00:1ca8:a7::1d2
+
 # ghoneycutt/ssh
 ssh::sshd_password_authentication: "no"
 ssh::permit_root_login: "no"

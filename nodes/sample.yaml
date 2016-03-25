@@ -1,0 +1,110 @@
+#classes:
+#  - hood
+#  - backbone
+#  - ibgp
+#  - icvpn
+#  - ffrl
+
+#nets_self: &nets_self
+#  - 10.18.1.1/32
+#  - 10.18.8.0/21
+
+#nets_self6: &nets_self6
+#  - fd74:fdaa:9dc4:0101::/64
+#  - 2a03:2260:1001:0101::/64
+#  - fd74:fdaa:9dc4:0800::/64
+#  - 2a03:2260:1001:0800::/64
+
+#network::inet::dhcp:
+#  eth0: {}
+
+#network::inet6::static:
+#  eth0:
+#    address: 2a03:4000:7:51::1/64
+#    gateway: fe80::1
+
+#bird::router_id: 46.38.241.104
+
+#hood::bandwidth: 1000mbit/1000mbit
+
+#hood::create:
+#  testhood:
+#    subnet: 10.18.8.0/21
+#    subnet6:
+#      - fd74:fdaa:9dc4:0800::/64
+#      - 2a03:2260:1001:0800::/64
+#    fastd:
+#      begin: 10000
+#      end: 10003
+
+#backbone::ip:
+# - 10.18.1.1/32
+
+#backbone::ip6:
+# - fd74:fdaa:9dc4:101::1/64
+# - 2a03:2260:1001:101::1/64
+
+#backbone::nets_self: *nets_self
+#backbone::nets_self6: *nets_self6
+
+#backbone::gre:
+#  test02:
+#    endpoint: "%{hiera('endpoint-test02')}"
+#    transfer: 10.18.248.0/31
+#    transfer6: fd74:fdaa:9dc4:f800::1/64
+#backbone::gre:
+#  gw02:
+#    endpoint: "%{hiera('endpoint-gw02')}"
+#    transfer: 10.18.248.0/31
+#    transfer6: fd74:fdaa:9dc4:f800::1/64
+#  gw03:
+#    endpoint: "%{hiera('endpoint-gw03')}"
+#    transfer: 10.18.248.2/31
+#    transfer6: fd74:fdaa:9dc4:f802::1/64
+#  gw04:
+#    endpoint: "%{hiera('endpoint-gw04')}"
+#    transfer: 10.18.248.4/31
+#    transfer6: fd74:fdaa:9dc4:f804::1/64
+#  gw05:
+#    endpoint: "%{hiera('endpoint-gw05')}"
+#    transfer: 10.18.248.6/31
+#    transfer6: fd74:fdaa:9dc4:f806::1/64
+#  gw06:
+#    endpoint: "%{hiera('endpoint-gw06')}"
+#    transfer: 10.18.248.8/31
+#    transfer6: fd74:fdaa:9dc4:f808::1/64
+#  gw07:
+#    endpoint: "%{hiera('endpoint-gw07')}"
+#    transfer: 10.18.248.10/31
+#    transfer6: fd74:fdaa:9dc4:f80a::1/64
+#  gw08:
+#    endpoint: "%{hiera('endpoint-gw08')}"
+#    transfer: 10.18.248.12/31
+#    transfer6: fd74:fdaa:9dc4:f80c::1/64
+
+#ibgp::source: 10.18.1.1
+#ibgp::source6: fd74:fdaa:9dc4:0101::1
+
+#icvpn::node: '01'
+#icvpn::transfer_net: 10.207.18.1/16
+#icvpn::transfer_net6: fec0::a:cf:12:1/96
+#icvpn::nets_self: *nets_self
+#icvpn::nets_self6: *nets_self6
+
+#ffrl::nat_ip: 185.66.195.2
+#ffrl::preferred: ber
+#ffrl::public_nets_self: *nets_self
+#ffrl::public_nets_self6: *nets_self6
+#ffrl::bba_dus: /31
+#ffrl::bbb_dus: /31
+#ffrl::bba_fra: /31
+#ffrl::bbb_fra: /31
+#ffrl::bba_ber: /31
+#ffrl::bbb_ber: /31
+#ffrl::bba_dus6: /64
+#ffrl::bbb_dus6: /64
+#ffrl::bba_fra6: /64
+#ffrl::bbb_fra6: /64
+#ffrl::bba_ber6: /64
+#ffrl::bbb_ber6: /64
+
